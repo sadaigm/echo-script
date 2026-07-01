@@ -1,0 +1,14 @@
+# EchoScript server dependencies
+# Install:  pip install -r requirements.txt
+
+# NOTE: uvicorn[standard] (not bare "uvicorn") is what pulls in the
+# WebSocket protocol handler (websockets/wsproto). Without the [standard]
+# extra, FastAPI WebSocket endpoints reject the upgrade with 404.
+uvicorn[standard]>=0.27.0
+
+fastapi>=0.110.0
+httpx>=0.27.0
+
+# Used by server-socket_ai.py for the Ollama LLM cleanup/reply step.
+# Not required by server-socket.py (whisper-only) — safe to ignore there.
+# ollama>=0.1.6
