@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { width: 380px; font-family: sans-serif; padding: 10px; margin: 0; }
+    h3 { margin: 0 0 8px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    button { color: #fff; border: none; padding: 8px 10px; cursor: pointer; border-radius: 4px; font-size: 13px; }
+    #startBtn { background: #4CAF50; }
+    #stopBtn { background: #f44336; }
+    #refreshBtn { background: #607d8b; }
+    #managerBtn { background: #ff9800; }
+    #exportBtn { background: #2196f3; }
+    #clearBtn { background: #9e9e9e; }
+    #list { max-height: 340px; overflow-y: auto; }
+    .item { border-top: 1px solid #eee; padding: 8px 0; }
+    .item:first-child { border-top: none; }
+    .item h4 { margin: 0 0 4px; font-size: 13px; color: #222; }
+    .item .ts { font-size: 11px; color: #999; font-weight: normal; }
+    .item .src { font-size: 10px; color: #bbb; word-break: break-all; }
+    .item p { margin: 3px 0; font-size: 12px; }
+    .ai { color: #1565c0; font-style: italic; }
+    .actions { margin-top: 6px; }
+    .actions button { padding: 4px 8px; font-size: 11px; background: #2196f3; }
+    .empty { color: #999; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h3>EchoScript</h3>
+  <div class="controls">
+    <button id="startBtn">Stream Audio</button>
+    <button id="stopBtn">Stop</button>
+    <button id="refreshBtn">Refresh</button>
+    <button id="managerBtn">Full page ↗</button>
+    <button id="exportBtn">Export all</button>
+    <button id="clearBtn">Clear</button>
+  </div>
+  <div id="list"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+whisper-cpp-server/models/ggml-base.en.bin
+
+whisper-cpp-server/whisper-bin-ubuntu-x64
+whisper-cpp-server/whisper-bin-ubuntu-x64.tar.gz
+server/server-socket_ai.py
