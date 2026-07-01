@@ -1,0 +1,8 @@
+whisper-cpp-server/whisper-bin-ubuntu-x64.tar.gz
+whisper-cpp-server/start.sh
+whisper-cpp-server/build-image.sh
+whisper-cpp-server/Dockerfile
+whisper-cpp-server/models/download-ggml-model.sh
+server/readme.md
+**/__pycache__
+*.pyc

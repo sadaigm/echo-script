@@ -1,0 +1,14 @@
+services:
+  echo-script:
+    image: echo-script:latest
+    ports:
+      - "8000:8000"     # Python WebSocket / REST API
+      - "18001:8001"    # Whisper server (direct access for debugging)
+    environment:
+      - WHISPER_MODEL=base.en
+      - ECHOSCRIPT_DB=/data/transcripts.db
+    volumes:
+      - echo-data:/data
+
+volumes:
+  echo-data:

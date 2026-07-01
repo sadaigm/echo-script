@@ -15,7 +15,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-WHISPER_SERVER_URL = "http://127.0.0.1:8001/inference"
+WHISPER_SERVER_URL = os.getenv("WHISPER_SERVER_URL", "http://127.0.0.1:8001/inference")
 DB_PATH = os.getenv("ECHOSCRIPT_DB", "transcripts.db")
 
 
