@@ -23,6 +23,8 @@
     .ai { color: #1565c0; font-style: italic; }
     .actions { margin-top: 6px; }
     .actions button { padding: 4px 8px; font-size: 11px; background: #2196f3; }
+    .auto-toggle { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; color: #555; cursor: pointer; }
+    .auto-toggle input { margin: 0; cursor: pointer; }
     .empty { color: #999; font-size: 12px; }
   </style>
 </head>
@@ -32,6 +34,7 @@
     <button id="startBtn">Stream Audio</button>
     <button id="stopBtn">Stop</button>
     <button id="refreshBtn">Refresh</button>
+    <label class="auto-toggle"><input type="checkbox" id="autoToggle"> Auto</label>
     <button id="managerBtn">Full page ↗</button>
     <button id="exportBtn">Export all</button>
     <button id="clearBtn">Clear</button>

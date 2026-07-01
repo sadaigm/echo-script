@@ -2,7 +2,7 @@
 // Sends a 'source' control frame when the source video changes so the backend
 // starts a new record (no merge across visits).
 
-const WS_BASE = 'ws://10.0.0.100:8000'; // use ws://localhost:8000 if the server is local
+const WS_BASE = 'ws://echoscript-server:8000'; // use ws://localhost:8000 if the server is local
 
 let ws;
 let mediaRecorder;

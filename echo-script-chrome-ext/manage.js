@@ -1,5 +1,5 @@
 // Full-page manager: browse / search / export / delete every video transcript.
-const API = 'http://10.0.0.100:8000'; // use http://localhost:8000 if the server is local
+const API = 'http://echoscript-server:8000'; // use http://localhost:8000 if the server is local
 const listEl = document.getElementById('list');
 const searchEl = document.getElementById('search');
 const countEl = document.getElementById('count');
@@ -120,5 +120,4 @@ function exportAll() {
   downloadText('echoscript-all.txt', lines.join('\n'));
 }
 
-load();
-setInterval(load, 5000); // auto-refresh while the page is open
+load(); // manual refresh via button — no auto-poll

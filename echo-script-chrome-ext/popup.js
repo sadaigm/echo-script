@@ -1,5 +1,5 @@
 // Popup: quick view, one card per video. Reads from the backend REST API.
-const API = 'http://10.0.0.100:8000'; // use http://localhost:8000 if the server is local
+const API = 'http://echoscript-server:8000'; // use http://localhost:8000 if the server is local
 const listEl = document.getElementById('list');
 let lastItems = [];
 
@@ -13,6 +13,35 @@ document.getElementById('stopBtn').addEventListener('click', () => {
 });
 
 document.getElementById('refreshBtn').addEventListener('click', loadTranscripts);
+
+// --- auto-refresh toggle (off by default, persisted) ---
+const autoToggle = document.getElementById('autoToggle');
+let poll = null;
+
+function startPoll() {
+  if (poll) return;
+  poll = setInterval(loadTranscripts, 5000);
+}
+
+function stopPoll() {
+  if (poll) { clearInterval(poll); poll = null; }
+}
+
+autoToggle.addEventListener('change', async () => {
+  await chrome.storage.local.set({ autoRefresh: autoToggle.checked });
+  if (autoToggle.checked) startPoll();
+  else stopPoll();
+});
+
+// Restore preference on popup open
+(async () => {
+  const { autoRefresh = false } = await chrome.storage.local.get('autoRefresh');
+  autoToggle.checked = autoRefresh;
+  if (autoRefresh) startPoll();
+  loadTranscripts();
+})();
+
+window.addEventListener('unload', stopPoll);
 
 document.getElementById('managerBtn').addEventListener('click', () => {
   chrome.tabs.create({ url: chrome.runtime.getURL('manage.html') });
@@ -111,7 +140,3 @@ function exportAll() {
   }
   downloadText('echoscript-all.txt', lines.join('\n'));
 }
-
-loadTranscripts();
-const poll = setInterval(loadTranscripts, 3000); // near-live while popup is open
-window.addEventListener('unload', () => clearInterval(poll));
