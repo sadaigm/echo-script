@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import io
 import os
+import re
 import json
 import sqlite3
 import wave
@@ -214,6 +215,9 @@ async def websocket_endpoint(websocket: WebSocket):
                     return
 
                 raw_text = response.json().get("text", "").strip()
+
+            # Filter out whisper non-speech tokens like [BLANK_AUDIO], [MUSIC], etc.
+            raw_text = re.sub(r'\[(?:BLANK_AUDIO|NO_SPEECH|MUSIC|SILENCE|NOISE|LAUGHTER|APPLAUSE)\]', '', raw_text, flags=re.IGNORECASE).strip()
 
             if not raw_text:
                 return
